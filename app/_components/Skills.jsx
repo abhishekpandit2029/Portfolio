@@ -27,13 +27,12 @@ import { BiLogoJquery } from "react-icons/bi";
 export default function Skills() {
   return (
     <div className="flex flex-col space-y-8 mb-20" id="skills">
-      <div className="text-center flex flex-col space-y-2">
+      <div className="text-center flex flex-col space-y-2 justify-center items-center">
         <h1 className="text-4xl font-bold">
           Skills<span className="text-primary">.</span>
         </h1>
-        <p className="text-basic">
-          Some of my skills, i learnt in my journey of <br /> self thought
-          coding<span className="text-primary">.</span>
+        <p className="text-basic text-center w-[80%]">
+          This section provides an overview of my technical and soft skills. I am proficient in a wide range of programming languages, frameworks, and tools essential for modern development. Alongside my technical abilities, I possess strong problem-solving, communication, and collaboration skills that enable me to thrive in team-based environments.<span className="text-primary">.</span>
         </p>
       </div>
       <div className="flex gap-3 flex-wrap items-center justify-center rounded-md max-w-3xl mx-auto">

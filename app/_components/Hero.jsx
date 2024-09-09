@@ -13,7 +13,7 @@ export default function Hero() {
           <span className="underline underline-offset-4 text-primary">
             Abhishek Pandit,{" "}
           </span>
-          FrontEnd Developer<span className="text-primary">.</span>
+          Software Developer<span className="text-primary">.</span>
         </h1>
         <p className="text-[0.8rem] max-w-md mx-auto">
           An extensive display of my full-stack development skills, experiences,

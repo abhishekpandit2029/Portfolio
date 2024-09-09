@@ -4,17 +4,16 @@ import Image from "next/image";
 export default function Experience() {
   return (
     <div id="experience">
-      <div className="text-center flex flex-col space-y-2">
+      <div className="text-center flex flex-col space-y-2 justify-center items-center">
         <h1 className="text-4xl font-bold">
           Experience<span className="text-primary">.</span>
         </h1>
-        <p className="text-basic">
-          Some of my skills, i learnt in my journey of <br /> self thought
-          coding<span className="text-primary">.</span>
+        <p className="text-basic text-center w-[80%]">
+          In this section, I highlight my professional background and work experience. It showcases the roles I have undertaken, the responsibilities I managed, and the impact I have made in various projects. From internships to full-time positions, this section reflects my growth in the field and the skills I have acquired throughout my career journey.<span className="text-primary">.</span>
         </p>
       </div>
       <div className="flex tab:px-8 tab:pb-4 lap:px-16 lap:pb-8 items-center justify-center">
-        <div className="float-left">
+        <div className="float-left hidden lg:flex">
           <Image src={ExperienceImg} className="w-100%" alt="Logo" />
         </div>
         <div className="flex flex-col space-y-4 px-6 tab:p-0 w-[50%]">

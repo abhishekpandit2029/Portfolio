@@ -25,16 +25,16 @@ const certificateObj = [
 export default function Certificate() {
   return (
     <div className="mt-20" id="certificate">
-      <div className="text-center flex flex-col space-y-2 mb-10">
+      <div className="text-center flex flex-col space-y-2 justify-center items-center mb-10">
         <h1 className="text-4xl font-bold">
           Certificate<span className="text-primary">.</span>
         </h1>
-        <p className="text-basic">
-          Some of my skills, I learnt in my journey of <br /> self-taught coding
+        <p className="text-basic text-center w-[80%]">
+          This section showcases the certifications and training I have completed to further my knowledge and professional development. From technical courses to industry-recognized certifications, these credentials illustrate my commitment to continuous learning and staying updated with the latest industry trends.
           <span className="text-primary">.</span>
         </p>
       </div>
-      <div className="flex space-x-6 justify-center">
+      <div className="flex justify-center items-center flex-wrap gap-4">
         {certificateObj.map((item, index) => (
           <div
             key={index}
