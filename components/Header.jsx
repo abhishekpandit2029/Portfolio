@@ -40,24 +40,21 @@ export default function Header() {
               <MenuIcon className="h-6 w-6" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="ml-[96px]">
-            <Link href="/">
-              <DropdownMenuItem>About</DropdownMenuItem>
+          <DropdownMenuContent className="p-4 flex flex-col space-y-3">
+            <Link href="#about">
+              About
             </Link>
-            <Link href="/experience">
-              <DropdownMenuItem>Experience</DropdownMenuItem>
+            <Link href="#experience">
+              Experience
             </Link>
-            <Link href="/skills">
-              <DropdownMenuItem>Skills</DropdownMenuItem>
+            <Link href="#skills">
+              Skills
             </Link>
-            <Link href="/projects">
-              <DropdownMenuItem>Projects</DropdownMenuItem>
+            <Link href="#projects">
+              Projects
             </Link>
-            <Link href="/education">
-              <DropdownMenuItem>Education</DropdownMenuItem>
-            </Link>
-            <Link href="/certification">
-              <DropdownMenuItem>Certification</DropdownMenuItem>
+            <Link href="#certificate">
+              Certification
             </Link>
           </DropdownMenuContent>
         </DropdownMenu>

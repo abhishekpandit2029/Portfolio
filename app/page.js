@@ -10,7 +10,7 @@ import Certificate from "./_components/Certificate";
 
 export default function Home() {
   return (
-    <main className="mb-20 mx-4">
+    <main className="mx-4">
       <Hero />
       <Experience />
       <Skills />

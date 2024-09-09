@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section
-      className="relative grid place-content-center py-20 px-6"
+      className="relative grid place-content-center py-10 px-6"
       id="about"
     >
       <div className="md:max-w-2xl max-w-md text-center grid gap-1">
