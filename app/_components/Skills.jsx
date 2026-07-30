@@ -1,28 +1,94 @@
-import { TbBrandNextjs } from "react-icons/tb";
-import { SiJavascript } from "react-icons/si";
-import { FaHtml5 } from "react-icons/fa";
-import { IoLogoCss3 } from "react-icons/io";
-import { SiTailwindcss } from "react-icons/si";
-import { DiNodejs } from "react-icons/di";
-import { FaReact } from "react-icons/fa";
-import { DiMongodb } from "react-icons/di";
-import { FaDocker } from "react-icons/fa";
-import { TbBrandReactNative } from "react-icons/tb";
-import { TbBrandBootstrap } from "react-icons/tb";
-import { TbBrandTypescript } from "react-icons/tb";
-import { TbBrandGit } from "react-icons/tb";
-import { TbBrandGithub } from "react-icons/tb";
-import { TbBrandMysql } from "react-icons/tb";
-import { TbBrandRedux } from "react-icons/tb";
-import { TbBrandD3 } from "react-icons/tb";
-import { TbBrandVercel } from "react-icons/tb";
-import { TbBrandVscode } from "react-icons/tb";
-import { SiJest } from "react-icons/si";
-import { SiExpress } from "react-icons/si";
-import { FaLinux } from "react-icons/fa";
-import { SiNetlify } from "react-icons/si";
-import { SiAntdesign } from "react-icons/si";
-import { BiLogoJquery } from "react-icons/bi";
+import {
+  SiAmazonaws,
+  SiAngular,
+  SiAntdesign,
+  SiBootstrap,
+  SiCss3,
+  SiD3Dotjs,
+  SiExpress,
+  SiFastapi,
+  SiGit,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiJest,
+  SiJquery,
+  SiMobx,
+  SiMongodb,
+  SiMysql,
+  SiNetlify,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPusher,
+  SiPython,
+  SiReact,
+  SiReactquery,
+  SiRedux,
+  SiShopify,
+  SiSwr,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
+  SiVisualstudiocode,
+  SiVuedotjs,
+} from "react-icons/si";
+
+const skillsObj = [
+  {
+    category: "Languages",
+    items: [
+      { name: "HTML", icon: SiHtml5 },
+      { name: "CSS", icon: SiCss3 },
+      { name: "JavaScript", icon: SiJavascript },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "Python", icon: SiPython },
+    ],
+  },
+  {
+    category: "Frameworks and Libraries",
+    items: [
+      { name: "React.js", icon: SiReact },
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "Redux", icon: SiRedux },
+      { name: "Redux Toolkit", icon: SiRedux },
+      { name: "MobX", icon: SiMobx },
+      { name: "Zustand", label: "Zu" },
+      { name: "Angular", icon: SiAngular },
+      { name: "Vue.js", icon: SiVuedotjs },
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Express.js", icon: SiExpress },
+      { name: "FastAPI", icon: SiFastapi },
+      { name: "Jest", icon: SiJest },
+      { name: "jQuery", icon: SiJquery },
+      { name: "Bootstrap", icon: SiBootstrap },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+      { name: "D3.js", icon: SiD3Dotjs },
+    ],
+  },
+  {
+    category: "Databases",
+    items: [
+      { name: "MongoDB", icon: SiMongodb },
+      { name: "MySQL", icon: SiMysql },
+    ],
+  },
+  {
+    category: "Developer Tools and Platforms",
+    items: [
+      { name: "SWR", icon: SiSwr },
+      { name: "TanStack Query", icon: SiReactquery },
+      { name: "Git", icon: SiGit },
+      { name: "GitHub", icon: SiGithub },
+      { name: "VS Code", icon: SiVisualstudiocode },
+      { name: "Vercel", icon: SiVercel },
+      { name: "Netlify", icon: SiNetlify },
+      { name: "AWS", icon: SiAmazonaws },
+      { name: "Ant Design", icon: SiAntdesign },
+      { name: "Pub/Sub (Pusher)", icon: SiPusher },
+      { name: "Shopify", icon: SiShopify },
+    ],
+  },
+];
 
 export default function Skills() {
   return (
@@ -35,70 +101,38 @@ export default function Skills() {
           This section provides an overview of my technical and soft skills. I am proficient in a wide range of programming languages, frameworks, and tools essential for modern development. Alongside my technical abilities, I possess strong problem-solving, communication, and collaboration skills that enable me to thrive in team-based environments.<span className="text-primary">.</span>
         </p>
       </div>
-      <div className="flex gap-3 flex-wrap items-center justify-center rounded-md max-w-3xl mx-auto">
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <FaHtml5 className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <IoLogoCss3 className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <TbBrandBootstrap className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <SiTailwindcss className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <BiLogoJquery className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <SiJavascript className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <TbBrandTypescript className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <FaReact className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <TbBrandNextjs className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <TbBrandRedux className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <DiNodejs className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <SiExpress className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <TbBrandMysql className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <DiMongodb className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <SiJest className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <TbBrandGit className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <TbBrandGithub className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <TbBrandD3 className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <SiAntdesign className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <TbBrandVercel className="h-10 w-10" />
-        </div>
-        <div className="h-24 w-24 grid place-items-center rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95">
-          <FaLinux className="h-10 w-10" />
-        </div>
+      <div className="flex flex-col space-y-8 max-w-3xl mx-auto px-5">
+        {skillsObj.map((group, groupIndex) => (
+          <div key={groupIndex} className="flex flex-col space-y-4">
+            <p className="text-sm text-center text-muted-foreground">
+              {group.category}
+              <span className="text-primary">.</span>
+            </p>
+            <div className="flex gap-3 flex-wrap items-center justify-center rounded-md">
+              {group.items.map((item, itemIndex) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={itemIndex}
+                    title={item.name}
+                    className="h-24 w-24 grid place-items-center content-center gap-2 rounded-md border active:bg-secondary md:hover:bg-secondary transition cursor-pointer hover:scale-95"
+                  >
+                    {Icon ? (
+                      <Icon className="h-8 w-8" />
+                    ) : (
+                      <span className="h-8 w-8 grid place-items-center text-xl font-bold">
+                        {item.label}
+                      </span>
+                    )}
+                    <p className="text-[0.65rem] text-center px-1 leading-tight">
+                      {item.name}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

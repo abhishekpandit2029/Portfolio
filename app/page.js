@@ -1,7 +1,6 @@
 import { projects } from "../lib/projects";
 import Hero from "./_components/Hero";
 import Project from "./_components/Project";
-import ProjectsSnip from "./_components/ProjectsSnip";
 import Skills from "./_components/Skills";
 import { Button } from "../components/ui/button";
 import Link from "next/link";
@@ -27,9 +26,9 @@ export default function Home() {
         </div>
 
         <div className="flex gap-4 flex-wrap items-center justify-center md:px-20 lg:px-32 px-5">
-          <Project {...projects[0]} />
-          <Project {...projects[1]} />
-          <Project {...projects[2]} />
+          {projects.map((project, index) => (
+            <Project key={index} {...project} />
+          ))}
         </div>
 
         <div className="grid place-content-center mt-10">
