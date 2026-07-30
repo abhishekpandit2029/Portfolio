@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 
 @layer base {
   :root {
@@ -50,16 +50,90 @@
   }
 }
 
- 
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+  }
+  ::selection {
+    @apply bg-primary/25;
+  }
+}
+
+@layer components {
+  /* One shared horizontal rhythm for every section on the site. */
+  .shell {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-12;
+  }
+  /* Offsets anchor scrolling so the sticky header never covers a heading. */
+  .section {
+    @apply scroll-mt-24 py-16 md:py-24;
+  }
+  .surface {
+    @apply rounded-xl border bg-background dark:bg-secondary/30;
+  }
+  .surface-hover {
+    @apply transition-colors hover:border-primary/40 hover:bg-secondary/60 dark:hover:bg-secondary/50;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs text-muted-foreground;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border bg-secondary/50 px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground;
+  }
+  .text-gradient {
+    @apply bg-gradient-to-br from-primary via-primary to-foreground/80 bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  /* Faint graph-paper backdrop, faded out toward the edges. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 20%, transparent 100%);
+  }
+  .glow {
+    background: radial-gradient(circle at center, hsl(var(--primary) / 0.18), transparent 65%);
   }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Slim scrollbar that follows the active theme. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border: 2px solid hsl(var(--background));
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

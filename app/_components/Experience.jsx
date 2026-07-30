@@ -1,95 +1,103 @@
-import ExperienceImg from "../../public/EXP.svg";
-import Image from "next/image";
-
-const experienceObj = [
-  {
-    role: "Software Development Engineer 1",
-    company: "VIXII",
-    location: "United Kingdom",
-    mode: "Remote",
-    duration: "August 2025 - Present",
-    points: [
-      "Spearheaded the development of a Headless Shopify platform using Next.js, leveraging Shopify Storefront and Admin APIs to deliver a scalable, high-performance experience.",
-      "Designed and developed reusable, API-driven frontend architecture for product discovery, collections, product detail pages, cart, customer authentication, and checkout, improving maintainability and application performance.",
-      "Built a centralized Admin Dashboard to streamline product, inventory, customer, event, marketing, and order management while integrating digital analytics and marketing platforms to enable customer insights, campaign optimization, and data-driven decision-making.",
-      "Optimized platform performance and search visibility by implementing server-side rendering (SSR), dynamic metadata, structured data, image optimization, and modern SEO best practices, enhancing Core Web Vitals and organic discoverability.",
-      "Collaborated with designers, product managers, and marketing teams to deliver scalable features, optimize user journeys, and enhance customer experience.",
-    ],
-  },
-  {
-    role: "Software Developer",
-    company: "Ethan.ai",
-    location: "Bengaluru, Karnataka, India",
-    mode: "On-site",
-    duration: "June 2023 - July 2025",
-    points: [
-      "Worked on a fintech product as part of the frontend team, contributing to frontend architecture, key feature development, and a seamless, high-performance user experience.",
-      "Played a key role in developing the Wealth Management Dashboard, crafting an intuitive and responsive UI for wealth managers, banks, and high net worth individuals (HNIs) to efficiently track and manage over $100M in assets under platform (AUP).",
-      "Built interactive platforms with rich data visualizations for ICICI, CSBL, and Axis Bank, enhancing user experience and enabling impactful financial decision-making.",
-      "Integrated a Pub/Sub architecture to minimize redundant API calls and enable efficient real-time data updates, improving system performance and scalability.",
-      "Integrated an automated data-cleaning service into the frontend, ensuring real-time data accuracy and consistency across the platform.",
-      "Implemented a robust payment UI and integrated Razorpay's payment gateway, managing database interactions and webhook-driven updates for a seamless transaction experience.",
-    ],
-  },
-  {
-    role: "Frontend Developer Intern",
-    company: "Oasis Infobyte",
-    location: "New Delhi, India",
-    mode: "Remote",
-    duration: "May 2023 - June 2023",
-    points: [
-      "Developed and optimized reusable UI components using React.js and Tailwind CSS, significantly improving performance, maintainability, and design consistency across the platform.",
-      "Integrated REST APIs for dynamic data rendering and ensured smooth, responsive user interactions by resolving UI/UX issues and enhancing accessibility.",
-    ],
-  },
-];
+import { Briefcase, GraduationCap } from "lucide-react";
+import SectionHeading from "../../components/SectionHeading";
+import { education, experience } from "../../lib/experience";
 
 export default function Experience() {
   return (
-    <div id="experience" className="mb-20">
-      <div className="text-center flex flex-col space-y-2 justify-center items-center mb-10">
-        <h1 className="text-4xl font-bold">
-          Experience<span className="text-primary">.</span>
-        </h1>
-        <p className="text-basic text-center w-[80%]">
-          In this section, I highlight my professional background and work experience. It showcases the roles I have undertaken, the responsibilities I managed, and the impact I have made in various projects. From internships to full-time positions, this section reflects my growth in the field and the skills I have acquired throughout my career journey.<span className="text-primary">.</span>
-        </p>
-      </div>
-      <div className="flex items-start justify-center gap-6 md:px-8 lg:px-16">
-        <div className="hidden lg:flex lg:w-[40%] lg:sticky lg:top-24">
-          <Image src={ExperienceImg} className="w-full h-auto" alt="Experience" />
-        </div>
-        <div className="flex flex-col space-y-4 px-5 lg:px-0 w-full lg:w-[60%]">
-          {experienceObj.map((item, index) => (
-            <div
-              key={index}
-              className="relative border bg-background dark:bg-secondary rounded-md p-4 space-y-3"
-            >
-              <div className="flex flex-col gap-1 md:flex-row md:items-start md:justify-between md:gap-4">
-                <div className="space-y-1">
-                  <p className="font-bold text-xl">{item.role}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {item.company} &middot; {item.location}
-                  </p>
+    <section id="experience" className="section">
+      <div className="shell">
+        <SectionHeading
+          eyebrow="Career"
+          icon={Briefcase}
+          title="Experience"
+          subtitle="The roles I have taken on, the products I helped ship, and the impact I made along the way."
+        />
+
+        {/* Timeline: a single rail on the left with a marker per role. */}
+        <ol className="relative space-y-6 border-l pl-6 md:pl-10">
+          {experience.map((item) => (
+            <li key={`${item.company}-${item.duration}`} className="relative">
+              <span
+                aria-hidden="true"
+                className={
+                  item.current
+                    ? "absolute -left-[1.85rem] top-6 h-3 w-3 rounded-full bg-primary ring-4 ring-background md:-left-[2.85rem]"
+                    : "absolute -left-[1.85rem] top-6 h-3 w-3 rounded-full border-2 border-muted-foreground/40 bg-background md:-left-[2.85rem]"
+                }
+              />
+
+              <article className="surface surface-hover p-5 md:p-6">
+                <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-semibold md:text-xl">
+                      {item.role}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      <span className="font-medium text-foreground/90">
+                        {item.company}
+                      </span>{" "}
+                      &middot; {item.location}
+                    </p>
+                  </div>
+                  <div className="flex shrink-0 flex-wrap items-center gap-2">
+                    <span className="chip">{item.duration}</span>
+                    <span className="chip">{item.mode}</span>
+                    {item.current ? (
+                      <span className="chip border-primary/40 text-primary">
+                        Current
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
-                <div className="flex items-center gap-2 shrink-0">
-                  <p className="text-sm text-muted-foreground">
-                    {item.duration}
-                  </p>
-                  <span className="text-xs border rounded-full px-2 py-0.5">
-                    {item.mode}
-                  </span>
+
+                <ul className="mt-4 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                  {item.points.map((point, pointIndex) => (
+                    <li key={pointIndex} className="flex gap-2.5">
+                      <span
+                        aria-hidden="true"
+                        className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70"
+                      />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-4 flex flex-wrap gap-2 border-t pt-4">
+                  {item.stack.map((tech) => (
+                    <span key={tech} className="chip bg-secondary/40">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
-              </div>
-              <ul className="list-disc pl-5 space-y-1 text-sm marker:text-primary">
-                {item.points.map((point, pointIndex) => (
-                  <li key={pointIndex}>{point}</li>
-                ))}
-              </ul>
-            </div>
+              </article>
+            </li>
           ))}
-        </div>
+
+          <li className="relative">
+            <span
+              aria-hidden="true"
+              className="absolute -left-[1.85rem] top-6 h-3 w-3 rounded-full border-2 border-muted-foreground/40 bg-background md:-left-[2.85rem]"
+            />
+            <article className="surface surface-hover p-5 md:p-6">
+              <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                <div className="space-y-1">
+                  <h3 className="flex items-center gap-2 text-lg font-semibold md:text-xl">
+                    <GraduationCap className="h-5 w-5 text-primary" />
+                    {education.degree}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    <span className="font-medium text-foreground/90">
+                      {education.school}
+                    </span>{" "}
+                    &middot; {education.location}
+                  </p>
+                </div>
+                <span className="chip shrink-0">{education.duration}</span>
+              </div>
+            </article>
+          </li>
+        </ol>
       </div>
-    </div>
+    </section>
   );
 }

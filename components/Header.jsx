@@ -1,7 +1,14 @@
+"use client";
+
 import Link from "next/link";
-import Logo from "./Logo";
-import { Button } from "./ui/button";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { MenuIcon } from "lucide-react";
+import Logo from "./Logo";
+import { ModeToggle } from "./ModeToggle";
+import { Button } from "./ui/button";
+import { cn } from "../lib/utils";
+import { navigation } from "../lib/profile";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,58 +17,92 @@ import {
 } from "../components/ui/dropdown-menu";
 
 export default function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("about");
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Highlight the nav item for whichever section is crossing the viewport middle.
+  useEffect(() => {
+    if (!isHome) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    const sections = navigation
+      .map((item) => document.getElementById(item.id))
+      .filter(Boolean);
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [isHome]);
+
   return (
-    <header className="flex justify-between items-center py-5 px-7 md:px-20 lg:px-32">
-      <div>
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full border-b transition-colors duration-300",
+        scrolled
+          ? "border-border bg-background/80 backdrop-blur-md"
+          : "border-transparent bg-transparent"
+      )}
+    >
+      <div className="shell flex h-16 items-center justify-between gap-4">
         <Logo />
-      </div>
-      <div className="flex gap-3 items-center justify-center">
-        <ul className="md:flex gap-4 text-sm mr-5 hidden">
-          <li className="hover:underline underline-offset-4 hover:text-primary text-base">
-            <Link href="#about">About</Link>
-          </li>
-          <li className="hover:underline underline-offset-4 hover:text-primary text-base">
-            <Link href="#experience">Experience</Link>
-          </li>
-          <li className="hover:underline underline-offset-4 hover:text-primary text-base">
-            <Link href="#skills">Skills</Link>
-          </li>
-          <li className="hover:underline underline-offset-4 hover:text-primary text-base">
-            <Link href="#projects">Projects</Link>
-          </li>
-          <li className="hover:underline underline-offset-4 hover:text-primary text-base">
-            <Link href="#certificate">Certification</Link>
-          </li>
-        </ul>
 
-        <DropdownMenu>
-          <DropdownMenuTrigger className="md:hidden flex" asChild>
-            <Button variant="ghost" size="icon">
-              <MenuIcon className="h-6 w-6" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="p-4 flex flex-col space-y-3">
-            <Link href="#about">
-              About
-            </Link>
-            <Link href="#experience">
-              Experience
-            </Link>
-            <Link href="#skills">
-              Skills
-            </Link>
-            <Link href="#projects">
-              Projects
-            </Link>
-            <Link href="#certificate">
-              Certification
-            </Link>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <nav className="hidden lg:block">
+          <ul className="flex items-center gap-1">
+            {navigation.map((item) => (
+              <li key={item.id}>
+                <Link
+                  href={`/#${item.id}`}
+                  className={cn(
+                    "rounded-full px-3 py-1.5 text-sm transition-colors hover:text-primary",
+                    isHome && active === item.id
+                      ? "bg-secondary text-primary"
+                      : "text-muted-foreground"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-        <Button asChild>
-          <Link href="/contact">Contact Me</Link>
-        </Button>
+        <div className="flex items-center gap-2">
+          <ModeToggle />
+          <Button asChild size="sm" className="hidden sm:flex">
+            <Link href="/#contact">Contact Me</Link>
+          </Button>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex lg:hidden" asChild>
+              <Button variant="outline" size="icon" aria-label="Open menu">
+                <MenuIcon className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-44">
+              {navigation.map((item) => (
+                <DropdownMenuItem key={item.id} asChild>
+                  <Link href={`/#${item.id}`}>{item.label}</Link>
+                </DropdownMenuItem>
+              ))}
+              <DropdownMenuItem asChild>
+                <Link href="/projects">All Projects</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
     </header>
   );

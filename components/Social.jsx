@@ -1,12 +1,29 @@
-import { GitHubLogoIcon, InstagramLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
+import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
+import { profile } from "../lib/profile";
+
+const links = [
+  { label: "GitHub", href: profile.socials.github, icon: Github },
+  { label: "LinkedIn", href: profile.socials.linkedin, icon: Linkedin },
+  { label: "Email", href: `mailto:${profile.email}`, icon: Mail },
+];
 
 export default function Social() {
-    return (
-        <div className="flex gap-2 items-center -ml-1 bg-secondary rounded-full p-2 w-fit">
-            <Link href="https://github.com/r2hu1" className="hover:text-primary"><GitHubLogoIcon className="h-4 w-4" /></Link>
-            <Link href="https://instagram.com/r.rah_ul" className="hover:text-primary"><InstagramLogoIcon className="h-4 w-4" /></Link>
-            <Link href="https://x.com/r2hu1" className="hover:text-primary"><TwitterLogoIcon className="h-4 w-4" /></Link>
-        </div>
-    )
+  return (
+    <div className="flex w-fit items-center gap-1">
+      {links.map(({ label, href, icon: Icon }) => (
+        <Link
+          key={label}
+          href={href}
+          target={href.startsWith("mailto:") ? undefined : "_blank"}
+          rel="noreferrer"
+          aria-label={label}
+          title={label}
+          className="grid h-9 w-9 place-items-center rounded-full border text-muted-foreground transition-colors hover:border-primary/40 hover:bg-secondary hover:text-primary"
+        >
+          <Icon className="h-4 w-4" />
+        </Link>
+      ))}
+    </div>
+  );
 }
